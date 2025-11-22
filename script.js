@@ -14,10 +14,10 @@ async function searchData() {
     resultDiv.innerHTML = `
       <h2>Данные найдены:</h2>
       <p><strong>ФИО:</strong> ${user.name}</p>
-      <p><strong>День рождения:</strong> ${user.birthday}</p>
+      <p><strong>Тип клиента:</strong> ${user.type_client}</p>
       <p><strong>Предпочтения:</strong> ${user.preferences}</p>
-      <p><strong>Возраст:</strong> ${user.age}</p>
-      <p><strong>Любимый цвет:</strong> ${user.favorite_color}</p>
+      <p><strong>Грейд:</strong> ${user.grade}</p>
+      <p><strong>Коментарий:</strong> ${user.commentary}</p>
     `;
   } else {
     resultDiv.innerHTML = '<p>Номер не найден!</p>';

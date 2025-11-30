@@ -5,71 +5,147 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 20px;
 }
 
 .container {
-  text-align: center;
-  width: 100%;
-  max-width: 800px;  /* Увеличен для большого поля */
-  padding: 30px;
   background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  padding: 40px;
+  text-align: center;
 }
 
 h1 {
-  margin-bottom: 30px;
   color: #333;
+  margin-bottom: 30px;
   font-size: 28px;
+  font-weight: 600;
 }
 
 .phone-input {
   width: 100%;
-  max-width: 700px;      /* Очень широкое поле */
-  padding: 30px 20px;   /* Большие внутренние отступы (высота поля) */
-  font-size: 24px;     /* Крупный текст */
-  border: 3px solid #007bff;
+  max-width: 600px;
+  padding: 25px 20px;
+  font-size: 20px;
+  border: 2px solid #e0e0e0;
   border-radius: 12px;
-  margin-bottom: 25px;
-  transition: border-color 0.3s, transform 0.2s;
+  margin: 20px auto 30px;
+  transition: all 0.3s ease;
   outline: none;
 }
 
 .phone-input:focus {
-  border-color: #0056b3;
-  transform: scale(1.02);  /* Лёгкое увеличение при фокусе */
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
 }
 
 button {
-  padding: 18px 36px;
-  font-size: 20px;
-  background-color: #007bff;
+  padding: 18px 40px;
+  font-size: 18px;
+  font-weight: 600;
   color: white;
+  background: linear-gradient(45deg, #667eea, #764ba2);
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.5px;
 }
 
 button:hover {
-  background-color: #0056b3;
   transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
 }
 
-#result {
-  margin-top: 30px;
+/* Контейнер для результата */
+.result-container {
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  display: none; /* Скрыт по умолчанию */
+}
+
+/* Карточка пользователя */
+.user-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Блок с фото */
+.photo-container {
+  text-align: center;
+}
+
+.user-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #667eea;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.user-photo:hover {
+  transform: scale(1.05);
+}
+
+/* Блок с данными */
+.info-container {
   text-align: left;
-  padding: 25px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  line-height: 1.6;
 }
 
+.info-item {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #555;
+  min-width: 140px;
+  font-size: 16px;
+}
+
+.info-value {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Заголовок в карточке */
+.user-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.user-birthday {
+  color: #7f8c8d;
+  font-style: italic;
+  margin-bottom: 25px;
+}
+
+/* Сообщение об ошибке */
+.error-message {
+  color: #e74c3c;
+  font-size: 18px;
+  text-align: center;
+  padding: 20px;
+}

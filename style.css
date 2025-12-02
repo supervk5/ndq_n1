@@ -3,10 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* 1. Фон градиента в body */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #ea33f7 0%, #ea33f7 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -42,18 +42,18 @@ h1 {
   transition: all 0.3s ease;
   outline: none;
 }
-/* 2. Цвет границы при фокусе у поля ввода */
+
 .phone-input:focus {
-  border-color: #ea33f7;
-  box-shadow: 0 0 0 4px rgba(234, 51, 247, 0.2);
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
 }
-/* 3. Градиент кнопки */
+
 button {
   padding: 18px 40px;
   font-size: 18px;
   font-weight: 600;
   color: white;
-  background: linear-gradient(45deg, #ea33f7, #ea33f7);
+  background: linear-gradient(45deg, #667eea, #764ba2);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -63,7 +63,7 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(234, 51, 247, 0.3);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
 }
 
 /* Контейнер для результата */
@@ -93,7 +93,7 @@ button:hover {
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid #ea33f7;  /* 4. Цвет рамки фото */
+  border: 5px solid #667eea;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
@@ -117,7 +117,7 @@ button:hover {
 
 .info-label {
   font-weight: 600;
-  color: #ea33f7; /* 6. Цвет метки в info-item (опционально) color: #555; */ 
+  color: #555;
   min-width: 140px;
   font-size: 16px;
 }
@@ -132,7 +132,7 @@ button:hover {
 .user-name {
   font-size: 24px;
   font-weight: 700;
-  color: #ea33f7; /* 5. Цвет заголовка в карточке */
+  color: #2c3e50;
   margin-bottom: 10px;
 }
 

@@ -145,25 +145,6 @@ async function searchData() {
               <span class="info-value">${cinemasList}</span>
             </div>
 
-            <div class="info-item">
-              <span class="info-label">Тип клиента:</span>
-              <span class="info-value">${user.type_client}</span>
-            </div>
-
-            <div class="info-item">
-              <span class="info-label">Грейд:</span>
-              <span class="info-value">${user.grade}</span>
-            </div>
-
-            <div class="info-item">
-              <span class="info-label">Предпочтения:</span>
-              <span class="info-value">${user.preferences}</span>
-            </div>
-
-            <div class="info-item">
-              <span class="info-label">Комментарий:</span>
-              <span class="info-value">${user.commentary}</span>
-            </div>
           </div>
         </div>
       `;

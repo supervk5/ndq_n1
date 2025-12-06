@@ -73,37 +73,37 @@ async function searchData() {
             <h2 class="user-name">${user.name}</h2>
 
             <div class="info-item">
-              <span class="info-label">Номер телефона:</span>
+              <span class="info-label">Номер телефона: </span>
               <span class="info-value">+${normalizedPhone}</span>
             </div>
 
             <div class="info-item">
-              <span class="info-label">Количество номеров:</span>
+              <span class="info-label">Количество номеров: </span>
               <span class="info-value">${user.number_count}</span>
             </div>
 
             <div class="info-item">
-              <span class="info-label">Приложение MM:</span>
+              <span class="info-label">Приложение MM: </span>
               <span class="info-value">${user.mm_app}</span>
             </div>
 
             <div class="info-item">
-              <span class="info-label">Дата последнего обращения:</span>
+              <span class="info-label">Дата последнего обращения: </span>
               <span class="info-value">${formatDate(user.last_contact)}</span>
             </div>
 
             <div class="info-item">
-              <span class="info-label">День рождения:</span>
+              <span class="info-label">День рождения: </span>
               <span class="info-value">${user.birthday}</span>
             </div>
 
             <div class="info-item">
-              <span class="info-label">Регион:</span>
+              <span class="info-label">Регион: </span>
               <span class="info-value">${user.region}</span>
             </div>
 
             <div class="info-item">
-              <span class="info-label">Лучший стандарт связи:</span>
+              <span class="info-label">Лучший стандарт связи: </span>
               <span class="info-value">
                 <span class="network-icon">${user.best_network.replace('G', '')}</span>
                 ${user.best_network}
@@ -111,12 +111,12 @@ async function searchData() {
             </div>
 
             <div class="info-item">
-              <span class="info-label">Модель устройства:</span>
+              <span class="info-label">Модель устройства: </span>
               <span class="info-value">${user.device_model}</span>
             </div>
 
             <div class="info-item">
-              <span class="info-label">Доля времени в сети 4G:</span>
+              <span class="info-label">Доля времени в сети 4G: </span>
               <div class="progress-container">
                 <div class="progress">
                   <div class="progress-fill" style="width: ${user['4g_share'].replace('%', '')}%"></div>
@@ -126,7 +126,7 @@ async function searchData() {
             </div>
 
             <div class="info-item">
-              <span class="info-label">Доля времени не в сети:</span>
+              <span class="info-label">Доля времени не в сети: </span>
               <div class="progress-container">
                 <div class="progress">
                   <div class="progress-fill" style="width: ${user.offline_share.replace('%', '')}%"></div>
@@ -136,12 +136,12 @@ async function searchData() {
             </div>
 
             <div class="info-item">
-              <span class="info-label">Мессенджеры:</span>
+              <span class="info-label">Мессенджеры: </span>
               <span class="info-value">${messengersList}</span>
             </div>
 
             <div class="info-item">
-              <span class="info-label">Онлайн‑кинотеатры:</span>
+              <span class="info-label">Онлайн‑кинотеатры: </span>
               <span class="info-value">${cinemasList}</span>
             </div>
 
@@ -168,3 +168,4 @@ document.getElementById('phoneInput').addEventListener('keydown', function(e) {
     searchData();
   }
 });
+

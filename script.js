@@ -1,3 +1,33 @@
+function normalizePhone(phone) {
+  let cleaned = phone.replace(/\D/g, '');
+  
+  if (cleaned.startsWith('8')) {
+    cleaned = '7' + cleaned.slice(1);
+  }
+  
+  if (cleaned.length === 10) {
+    cleaned = '7' + cleaned;
+  }
+  
+  return cleaned.slice(0, 11);
+}
+
+function formatDate(dateStr) {
+  const [day, month, year] = dateStr.split('.');
+  const months = [
+    'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+    'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+  ];
+  return `${parseInt(day)} ${months[parseInt(month) - 1]} ${year}`;
+}
+
+function getStatusClass(value) {
+  const num = parseFloat(value.replace('%', ''));
+  if (num >= 80) return 'status-good';
+  if (num >= 50) return 'status-warning';
+  return 'status-critical';
+}
+
 async function searchData() {
   const phoneInput = document.getElementById('phoneInput').value;
   const resultDiv = document.getElementById('result');
@@ -16,22 +46,19 @@ async function searchData() {
   try {
     const response = await fetch('data.json');
     if (!response.ok) throw new Error('Не удалось загрузить данные');
-    
+
     const data = await response.json();
     const user = data.find(item => item.phone === normalizedPhone);
 
     if (user) {
-      // Формируем список мессенджеров
-      const messengersList = user.messengers.length 
+      const messengersList = user.messengers?.length
         ? user.messengers.join(', ')
         : 'не указаны';
 
-      // Формируем список онлайн‑кинотеатров
-      const cinemasList = user.online_cinemas.length
+      const cinemasList = user.online_cinemas?.length
         ? user.online_cinemas.join(', ')
         : 'не указаны';
 
-      // Собираем HTML карточки пользователя
       resultDiv.innerHTML = `
         <div class="user-card">
           <div class="photo-container">
@@ -62,7 +89,7 @@ async function searchData() {
 
             <div class="info-item">
               <span class="info-label">Дата последнего обращения:</span>
-              <span class="info-value">${user.last_contact}</span>
+              <span class="info-value">${formatDate(user.last_contact)}</span>
             </div>
 
             <div class="info-item">
@@ -77,7 +104,10 @@ async function searchData() {
 
             <div class="info-item">
               <span class="info-label">Лучший стандарт связи:</span>
-              <span class="info-value">${user.best_network}</span>
+              <span class="info-value">
+                <span class="network-icon">${user.best_network.replace('G', '')}</span>
+                ${user.best_network}
+              </span>
             </div>
 
             <div class="info-item">
@@ -87,12 +117,22 @@ async function searchData() {
 
             <div class="info-item">
               <span class="info-label">Доля времени в сети 4G:</span>
-              <span class="info-value">${user['4g_share']}</span>
+              <div class="progress-container">
+                <div class="progress">
+                  <div class="progress-fill" style="width: ${user['4g_share'].replace('%', '')}%"></div>
+                </div>
+                <span class="${getStatusClass(user['4g_share'])}">${user['4g_share']}</span>
+              </div>
             </div>
 
             <div class="info-item">
               <span class="info-label">Доля времени не в сети:</span>
-              <span class="info-value">${user.offline_share}</span>
+              <div class="progress-container">
+                <div class="progress">
+                  <div class="progress-fill" style="width: ${user.offline_share.replace('%', '')}%"></div>
+                </div>
+                <span class="${getStatusClass(user.offline_share)}">${user.offline_share}</span>
+              </div>
             </div>
 
             <div class="info-item">
@@ -104,10 +144,32 @@ async function searchData() {
               <span class="info-label">Онлайн‑кинотеатры:</span>
               <span class="info-value">${cinemasList}</span>
             </div>
+
+            <div class="info-item">
+              <span class="info-label">Тип клиента:</span>
+              <span class="info-value">${user.type_client}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Грейд:</span>
+              <span class="info-value">${user.grade}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Предпочтения:</span>
+              <span class="info-value">${user.preferences}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Комментарий:</span>
+              <span class="info-value">${user.commentary}</span>
+            </div>
           </div>
         </div>
       `;
 
+      const card = resultDiv.querySelector('.user-card');
+      card.classList.add('show');
       resultDiv.style.display = 'block';
     } else {
       resultDiv.innerHTML = '<p class="error-message">Номер не найден в базе данных</p>';
@@ -120,7 +182,6 @@ async function searchData() {
   }
 }
 
-// Обработчик Enter
 document.getElementById('phoneInput').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     searchData();

@@ -123,9 +123,9 @@ button:hover {
 .info-label {
   font-weight: 600;
   color: #667eea;
-  min-width: 240px;
-  max-width: 240px;
-  flex-shrink: 0; /* Запрещаем сжатие */
+  min-width: 240px;  /* Увеличено с 140px до 240px */
+  max-width: 240px;  /* Увеличено с 140px до 240px */
+  flex-shrink: 0;     /* Запрещаем сжатие */
   white-space: nowrap; /* Запрещаем перенос текста */
   overflow: hidden;
   text-overflow: ellipsis;
@@ -137,7 +137,7 @@ button:hover {
   color: #333;
   font-size: 16px;
   line-height: 1.5;
-  flex-grow: 1; /* Разрешаем растягиваться */
+  flex-grow: 1;      /* Разрешаем растягиваться */
 }
 
 .user-name {
@@ -238,10 +238,12 @@ button:hover {
     margin-right: 0;
     margin-bottom: 5px;
     white-space: normal; /* Разрешаем перенос на мобильных */
+    font-size: 15px;
   }
 
   .info-value {
     margin-left: 0;
+    font-size: 15px;
   }
 
   .user-name {
@@ -384,6 +386,8 @@ button:hover {
 
   .info-label {
     font-size: 15px;
+    min-width: 200px; /* Немного уменьшена относительно десктопа, но сохраняет читаемость */
+    max-width: 200px;
   }
 
   .info-value {
@@ -411,11 +415,12 @@ button:hover {
   }
 }
 
-/* Дополнительные стили для печати */
+/* Стили для печати */
 @media print {
   body {
     background: white;
     color: black;
+    font-size: 12pt;
   }
 
   .container,
@@ -424,24 +429,43 @@ button:hover {
     box-shadow: none;
     border: none;
     background: transparent;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
   }
 
   .user-photo {
     border: none;
     box-shadow: none;
     filter: grayscale(100%);
+    width: 80px;
+    height: 80px;
   }
 
   a,
   button,
-  .network-icon {
+  .network-icon,
+  .progress-container {
     display: none !important;
+  }
+
+  .info-label {
+    font-weight: bold;
+    margin-right: 10px;
   }
 
   .info-label::after {
     content: ":";
   }
+
+  .info-value,
+  .user-name,
+  h1 {
+    color: black;
+  }
+
+  .result-container {
+    page-break-inside: avoid;
+  }
 }
-  
-
-

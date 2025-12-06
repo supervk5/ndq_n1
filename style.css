@@ -19,7 +19,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 900px;
+  max-width: 800px;
   padding: 40px;
   text-align: center;
 }
@@ -63,10 +63,9 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(234, 51, 247, 0.3);
+  box-shadow: 0 10px 2 Newton rgba(234, 51, 247, 0.3);
 }
 
-/* Контейнер для результата */
 .result-container {
   margin-top: 40px;
   padding: 30px;
@@ -75,15 +74,21 @@ button:hover {
   display: none;
 }
 
-/* Карточка пользователя */
 .user-card {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  align-items: flex-start;
+  gap: 30px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Блок с фото */
+.user-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .photo-container {
   text-align: center;
 }
@@ -102,14 +107,13 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Блок с данными */
 .info-container {
   text-align: left;
 }
 
 .info-item {
-  margin-bottom: 18px;
-  padding-bottom: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
   border-bottom: 1px solid #eee;
   display: flex;
   align-items: center;
@@ -117,8 +121,8 @@ button:hover {
 
 .info-label {
   font-weight: 600;
-  color: #555;
-  min-width: 180px;
+  color: #ea33f7;
+  min-width: 140px;
   font-size: 16px;
 }
 
@@ -128,18 +132,101 @@ button:hover {
   line-height: 1.5;
 }
 
-/* Заголовок */
 .user-name {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 12px;
+  color: #ea33f7;
+  margin-bottom: 10px;
 }
 
-/* Сообщение об ошибке */
+.user-birthday {
+  color: #7f8c8d;
+  font-style: italic;
+  margin-bottom: 25px;
+}
+
 .error-message {
   color: #e74c3c;
   font-size: 18px;
   text-align: center;
   padding: 20px;
+}
+
+/* Иконки для стандартов связи */
+.network-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #ea33f7;
+  color: white;
+  font-size: 12px;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+/* Прогресс‑бары */
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress {
+  flex-grow: 1;
+  height: 12px;
+  background-color: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #ea33f7;
+  transition: width 0.5s ease;
+}
+
+/* Цветовая индикация статусов */
+.status-good {
+  color: #27ae60;
+}
+
+.status-warning {
+  color: #e67e22;
+}
+
+.status-critical {
+  color: #e74c3c;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .user-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .photo-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .info-label {
+    min-width: auto;
+    display: block;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  .info-value {
+    margin-left: 0;
+  }
 }

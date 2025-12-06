@@ -61,6 +61,7 @@ button {
   letter-spacing: 0.5px;
 }
 
+
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
@@ -74,11 +75,12 @@ button:hover {
   display: none;
 }
 
-/* Основная сетка: фото сверху, под ним имя, справа — данные */
+
+/* Основная сетка: фото + имя в левой колонке, данные — в правой */
 .user-card {
   display: grid;
-  grid-template-columns: 180px 1fr; /* Фиксир. ширина фото, остальное — данные */
-  grid-template-rows: auto auto 1fr; /* Строки: фото, имя, данные */
+  grid-template-columns: 180px 1fr;
+  grid-template-rows: auto auto 1fr;
   gap: 15px;
   opacity: 0;
   transform: translateY(20px);
@@ -90,12 +92,17 @@ button:hover {
   transform: translateY(0);
 }
 
-.photo-container {
+/* Контейнер для фото и имени — левая колонка */
+.photo-and-name {
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 1 / 3;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center; /* Центрируем по горизонтали */
+  justify-content: center; /* Центрируем по вертикали */
+  gap: 10px;
 }
+
 
 .user-photo {
   width: 180px;
@@ -111,19 +118,16 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Имя прямо под фото */
 .user-name {
-  grid-column: 1;
-  grid-row: 2;
   font-size: 24px;
   font-weight: 700;
   color: #667eea;
-  margin: 10px 0 20px;
+  margin: 0;
   text-align: center;
-  width: 180px; /* Совпадает с шириной фото */
+  width: 100%;
 }
 
-/* Блок с данными — занимает вторую колонку, строки 1–3 */
+/* Правая колонка — данные */
 .info-container {
   grid-column: 2;
   grid-row: 1 / 4;
@@ -167,7 +171,7 @@ button:hover {
   color: #e74c3c;
   font-size: 18px;
   text-align: center;
-  padding: 2 Newton px;
+  padding: 20px;
 }
 
 /* Иконки для стандартов связи */
@@ -225,57 +229,79 @@ button:hover {
     padding: 20px;
     border-radius: 12px;
   }
+  
+/* Вертикальная укладка на мобильных */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    border-radius: 12px;
+  }
 
-  /* На мобильных — вертикальная укладка */
-.user-card {
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto;
-  gap: 20px;
+  .user-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    justify-items: center; /* Центрируем все элементы по горизонтали */
+  }
+
+  .photo-and-name,
+  .info-container {
+    grid-column: 1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .user-photo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .user-name {
+    font-size: 22px;
+    margin: 15px 0 10px; /* Отступ сверху больше, снизу меньше */
+    text-align: center;
+  }
+
+  .info-container {
+    padding: 0 15px;
+    align-items: center;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    text-align: center;
+  }
+
+  .info-label,
+  .info-value {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+
+  .info-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #667eea;
+  }
+
+  .info-value {
+    font-size: 15px;
+    color: #333;
+  }
 }
 
-.photo-container,
-.user-name,
-.info-container {
-  grid-column: 1;
-  text-align: center;
-  width: 100%;
-}
-
-.user-photo {
-  width: 140px;
-  height: 140px;
-}
-
-.user-name {
-  margin: 10px 0 15px;
-  font-size: 22px;
-}
-
-.info-container {
-  padding: 0 15px;
-}
-
-.info-item {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding-bottom: 6px;
-}
-
-.info-label {
-  margin-bottom: 0;
-  text-align: left;
-}
-
-.info-value {
-  width: 100%;
-  text-align: left;
-}
-
-/* Дополнительные корректировки для очень маленьких экранов */
+/* Дополнительные корректировки для очень маленьких экранов (до 480px) */
 @media (max-width: 480px) {
   .container {
     padding: 15px;
+  }
+
+  .user-card {
+    gap: 15px;
   }
 
   .user-photo {
@@ -285,7 +311,7 @@ button:hover {
 
   .user-name {
     font-size: 20px;
-    margin: 8px 0 12px;
+    margin: 12px 0 8px;
   }
 
   .info-container {
@@ -293,15 +319,21 @@ button:hover {
   }
 
   .info-item {
-    gap: 5px;
-    padding-bottom: 5px;
+    gap: 4px;
+    padding-bottom: 4px;
+  }
+
+  .info-label {
+    font-size: 14px;
+  }
+
+  .info-value {
+    font-size: 14px;
   }
 
   .phone-input,
   button {
-    padding: 16px 20px;
-    font-size: 16px;
+    padding: 14px 16px;
+    font-size: 15px;
   }
 }
-  
-  

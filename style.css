@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -78,7 +77,7 @@ button:hover {
 .user-card {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 30px;
+  gap: 15px;
   align-items: center;
   opacity: 0;
   transform: translateY(20px);
@@ -113,8 +112,8 @@ button:hover {
 }
 
 .info-item {
-  margin-bottom: 20px;
-  padding-bottom: 15px;
+  margin-bottom: 10px;
+  padding-bottom: 7.5px;
   border-bottom: 1px solid #eee;
   display: flex;
   align-items: center;
@@ -211,12 +210,12 @@ button:hover {
 
   .user-card {
     grid-template-columns: 1fr;
-    gap: 15px; /* Сокращён на 50% от 30px → 15px */
+    gap: 15px;
   }
 
   .photo-container {
     text-align: center;
-    margin-bottom: 10px; /* Сокращён на 50% от 20px → 10px */
+    margin-bottom: 20px;
   }
 
   .info-label {
@@ -224,7 +223,7 @@ button:hover {
     display: block;
     font-weight: 600;
     color: #555;
-    margin-bottom: 2.5px; /* Сокращён на 50% от 5px → 2.5px */
+    margin-bottom: 5px;
   }
 
   .info-value {
@@ -233,44 +232,142 @@ button:hover {
 
   .user-name {
     font-size: 22px;
-    margin-bottom: 7.5px; /* Сокращён на 50% от 15px → 7.5px */
+    margin-bottom: 15px;
   }
 
   .user-photo {
     width: 140px;
     height: 140px;
   }
+
+  /* Дополнительные корректировки для компактных экранов */
+  .phone-input {
+    padding: 20px 15px;
+    font-size: 18px;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .result-container {
+    padding: 25px;
+    margin-top: 30px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 10px;
+  }
 }
 
-/* Основные стили (десктоп) */
-.user-card {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 15px; /* Сокращён на 50% от 30px → 15px */
-  align-items: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+/* Очень маленькие экраны (смартфоны в портретном режиме) */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  .user-card {
+    gap: 10px;
+  }
+
+  .photo-container {
+    margin-bottom: 15px;
+  }
+
+  .user-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .user-name {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .info-label {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .info-value {
+    font-size: 15px;
+  }
+
+  .phone-input {
+    padding: 15px 10px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 12px 25px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .result-container {
+    padding: 20px;
+    margin-top: 25px;
+  }
+
+  .network-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    margin-right: 6px;
+  }
+
+  .progress-container {
+    gap: 8px;
+  }
+
+  .progress {
+    height: 10px;
+  }
 }
 
-.info-item {
-  margin-bottom: 10px; /* Сокращён на 50% от 20px → 10px */
-  padding-bottom: 7.5px; /* Сокращён на 50% от 15px → 7.5px */
-  border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
-}
+/* Для планшетов в альбомной ориентации */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .container {
+    max-width: 90%;
+    padding: 30px;
+  }
 
-.user-name {
-  font-size: 24px;
-  font-weight: 700;
-  color: #667eea;
-  margin-bottom: 5px; /* Сокращён на 50% от 10px → 5px */
-}
+  .user-photo {
+    width: 160px;
+    height: 160px;
+  }
 
-.user-birthday {
-  color: #7f8c8d;
-  font-style: italic;
-  margin-bottom: 12.5px; /* Сокращён на 50% от 25px → 12.5px */
-}
+  .user-name {
+    font-size: 22px;
+  }
 
+  .info-label {
+    font-size: 15px;
+  }
+
+  .info-value {
+    font-size: 15px;
+  }
+
+  .phone-input {
+    max-width: 500px;
+    padding: 22px 18px;
+  }
+
+  button {
+    padding: 16px 35px;
+    font-size: 17px;
+  }
+}

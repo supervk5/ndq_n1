@@ -1,25 +1,10 @@
-function normalizePhone(phone) {
-  let cleaned = phone.replace(/\D/g, '');
-  
-  // Если номер начинается с 8, заменяем на 7
-  if (cleaned.startsWith('8')) {
-    cleaned = '7' + cleaned.slice(1);
-  }
-  
-  // Если длина 10 цифр — добавляем 7 в начало
-  if (cleaned.length === 10) {
-    cleaned = '7' + cleaned;
-  }
-  
-  // Оставляем только 11 цифр (7 + 10 цифр)
-  return cleaned.slice(0, 11);
-}
-
 async function searchData() {
   const phoneInput = document.getElementById('phoneInput').value;
   const resultDiv = document.getElementById('result');
 
-  // Проверка на пустой ввод
+  resultDiv.style.display = 'none';
+  resultDiv.innerHTML = '';
+
   if (!phoneInput.trim()) {
     resultDiv.innerHTML = '<p class="error-message">Введите номер телефона</p>';
     resultDiv.style.display = 'block';
@@ -29,25 +14,28 @@ async function searchData() {
   const normalizedPhone = normalizePhone(phoneInput);
 
   try {
-    // Загрузка данных из JSON
     const response = await fetch('data.json');
-    
-    // Проверка статуса ответа
-    if (!response.ok) {
-      throw new Error('Не удалось загрузить данные');
-    }
+    if (!response.ok) throw new Error('Не удалось загрузить данные');
     
     const data = await response.json();
-
-    // Поиск пользователя по нормализованному номеру
     const user = data.find(item => item.phone === normalizedPhone);
 
     if (user) {
-      // Формирование карточки пользователя
+      // Формируем список мессенджеров
+      const messengersList = user.messengers.length 
+        ? user.messengers.join(', ')
+        : 'не указаны';
+
+      // Формируем список онлайн‑кинотеатров
+      const cinemasList = user.online_cinemas.length
+        ? user.online_cinemas.join(', ')
+        : 'не указаны';
+
+      // Собираем HTML карточки пользователя
       resultDiv.innerHTML = `
         <div class="user-card">
           <div class="photo-container">
-            <img 
+            <img
               src="${user.photo}"
               alt="${user.name}"
               onerror="this.src='https://via.placeholder.com/180?text=No+Photo'; this.alt='Фото отсутствует';"
@@ -56,35 +44,72 @@ async function searchData() {
           </div>
           <div class="info-container">
             <h2 class="user-name">${user.name}</h2>
-            <p class="user-birthday">Тип клиента: ${user.type_client}</p>
-            
+
             <div class="info-item">
-              <span class="info-label">Грейд:</span>
-              <span class="info-value">${user.grade}</span>
-            </div>
-            
-            <div class="info-item">
-              <span class="info-label">Предпочтения:</span>
-              <span class="info-value">${user.preferences}</span>
-            </div>
-			
-			<div class="info-item">
-              <span class="info-label">Коментарий:</span>
-              <span class="info-value">${user.commentary}</span>
-            </div>
-            
-            <div class="info-item">
-              <span class="info-label">Телефон:</span>
+              <span class="info-label">Номер телефона:</span>
               <span class="info-value">+${normalizedPhone}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Количество номеров:</span>
+              <span class="info-value">${user.number_count}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Приложение MM:</span>
+              <span class="info-value">${user.mm_app}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Дата последнего обращения:</span>
+              <span class="info-value">${user.last_contact}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">День рождения:</span>
+              <span class="info-value">${user.birthday}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Регион:</span>
+              <span class="info-value">${user.region}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Лучший стандарт связи:</span>
+              <span class="info-value">${user.best_network}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Модель устройства:</span>
+              <span class="info-value">${user.device_model}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Доля времени в сети 4G:</span>
+              <span class="info-value">${user['4g_share']}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Доля времени не в сети:</span>
+              <span class="info-value">${user.offline_share}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Мессенджеры:</span>
+              <span class="info-value">${messengersList}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Онлайн‑кинотеатры:</span>
+              <span class="info-value">${cinemasList}</span>
             </div>
           </div>
         </div>
       `;
-      
-      // Показываем контейнер с результатом
+
       resultDiv.style.display = 'block';
     } else {
-      // Пользователь не найден
       resultDiv.innerHTML = '<p class="error-message">Номер не найден в базе данных</p>';
       resultDiv.style.display = 'block';
     }
@@ -95,7 +120,7 @@ async function searchData() {
   }
 }
 
-// Добавляем обработчик нажатия Enter в поле ввода
+// Обработчик Enter
 document.getElementById('phoneInput').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     searchData();

@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -63,7 +64,7 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 2 Newton rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
 }
 
 .result-container {
@@ -228,5 +229,15 @@ button:hover {
 
   .info-value {
     margin-left: 0;
+  }
+
+  .user-name {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .user-photo {
+    width: 140px;
+    height: 140px;
   }
 }

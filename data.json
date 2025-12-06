@@ -1,39 +1,18 @@
 [
   {
-    "phone": "79161425372",
-    "name": "Станислав Жуганов",
-    "type_client": "Digital",
-    "preferences": "казино, яхты, путешествия",
-    "grade": 1,
-    "commentary": "может кинуть трубку в лицо оператору, во время разговора",
-	  "photo": "images/photo_stas.jpg"
-  },
-  {
     "phone": "79156522596",
-    "name": "Вячеслав Кундебин",
-    "type_client": "Звонарь",
-    "preferences": "компьютерные игры, смотреть новости",
-    "grade": 1,
-    "commentary": "угрожает вычислить оператора по СНИЛС",
-	  "photo": "images/photo_slava.jpg"
-  },
-  {
-    "phone": "79132358097",
-    "name": "Никита Охин",
-    "type_client": "Ходок",
-    "preferences": "книги, сериалы, ночные клубы",
-    "grade": 1,
-    "commentary": "приносит в салон РТК старое оборудование, требует деньги, угрожает засудить",
-	  "photo": "images/photo_nikita.jpg"
-  },
-  {
-    "phone": "79871699218",
-    "name": "Анастасия Коршунова",
-    "type_client": "Мультик",
-    "preferences": "сериалы про вампиров, путешествия",
-    "grade": 1,
-    "commentary": "совершает более 100 обращений в день, зафиксирован случай массовой подачи заявлений на увольнения операторами КЦ Ульяновска",
-	  "photo": "images/photo_nastya.jpg"
+    "name": "Иван",
+    "number_count": 3,
+    "mm_app": "есть",
+    "last_contact": "12.10.2025",
+    "birthday": "12 ноября",
+    "region": "Москва",
+    "best_network": "5G",
+    "device_model": "Apple iPhone 17 Pro",
+    "4g_share": "89,5%",
+    "offline_share": "10,1%",
+    "messengers": ["telegram", "whatsapp", "VK"],
+    "online_cinemas": ["kion", "кинопоиск", "wink", "okko", "ivi"],
+    "photo": "images/photo_slava.jpg"
   }
 ]
-

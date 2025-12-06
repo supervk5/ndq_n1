@@ -74,9 +74,11 @@ button:hover {
   display: none;
 }
 
+/* Основная сетка: фото сверху, под ним имя, справа — данные */
 .user-card {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 180px 1fr; /* Фиксир. ширина фото, остальное — данные */
+  grid-template-rows: auto auto 1fr; /* Строки: фото, имя, данные */
   gap: 15px;
   opacity: 0;
   transform: translateY(20px);
@@ -89,9 +91,10 @@ button:hover {
 }
 
 .photo-container {
-  text-align: center;
   grid-column: 1;
-  grid-row: 1 / 3;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .user-photo {
@@ -108,38 +111,43 @@ button:hover {
   transform: scale(1.05);
 }
 
-.info-container {
-  grid-column: 2;
-  grid-row: 1 / 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
+/* Имя прямо под фото */
 .user-name {
+  grid-column: 1;
+  grid-row: 2;
   font-size: 24px;
   font-weight: 700;
   color: #667eea;
-  margin: 15px 0 20px;
+  margin: 10px 0 20px;
   text-align: center;
-  width: 100%;
+  width: 180px; /* Совпадает с шириной фото */
+}
+
+/* Блок с данными — занимает вторую колонку, строки 1–3 */
+.info-container {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   padding-bottom: 7px;
   border-bottom: 1px solid #eee;
-  gap: 8px; /* Единый отступ в один "пробел" между label и value */
+  gap: 8px; /* Единый отступ между label и value */
 }
 
 .info-label {
   font-weight: 600;
   color: #667eea;
-  min-width: 140px;
   font-size: 16px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .info-value {
@@ -159,7 +167,7 @@ button:hover {
   color: #e74c3c;
   font-size: 18px;
   text-align: center;
-  padding: 20px;
+  padding: 2 Newton px;
 }
 
 /* Иконки для стандартов связи */
@@ -218,45 +226,82 @@ button:hover {
     border-radius: 12px;
   }
 
-  .user-card {
-    grid-template-columns: 1fr;
-    gap: 15px;
+  /* На мобильных — вертикальная укладка */
+.user-card {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+}
+
+.photo-container,
+.user-name,
+.info-container {
+  grid-column: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.user-photo {
+  width: 140px;
+  height: 140px;
+}
+
+.user-name {
+  margin: 10px 0 15px;
+  font-size: 22px;
+}
+
+.info-container {
+  padding: 0 15px;
+}
+
+.info-item {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding-bottom: 6px;
+}
+
+.info-label {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.info-value {
+  width: 100%;
+  text-align: left;
+}
+
+/* Дополнительные корректировки для очень маленьких экранов */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
   }
 
-  .photo-container,
-  .info-container {
-    grid-column: 1;
-    text-align: center;
-  }
-
-  .photo-container {
-    margin-bottom: 10px;
-  }
-
-  .info-container {
-    padding-top: 0;
+  .user-photo {
+    width: 120px;
+    height: 120px;
   }
 
   .user-name {
-    margin: 15px 0;
-    text-align: center;
+    font-size: 20px;
+    margin: 8px 0 12px;
+  }
+
+  .info-container {
+    padding: 0 10px;
   }
 
   .info-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+    gap: 5px;
+    padding-bottom: 5px;
   }
 
-  .info-label {
-    min-width: auto;
-    font-weight: 600;
-    color: #555;
-    margin-bottom: 0;
-  }
-
-  .info-value {
-    margin-left: 0;
-    width: 100%;
+  .phone-input,
+  button {
+    padding: 16px 20px;
+    font-size: 16px;
   }
 }
+  
+  

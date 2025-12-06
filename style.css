@@ -112,17 +112,24 @@ button:hover {
 }
 
 .info-item {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
   padding-bottom: 7.5px;
   border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
+  flex-wrap: nowrap; /* Запрещаем перенос */
 }
 
 .info-label {
   font-weight: 600;
   color: #667eea;
   min-width: 140px;
+  max-width: 140px;
+  flex-shrink: 0; /* Запрещаем сжатие */
+  white-space: nowrap; /* Запрещаем перенос текста */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 15px; /* Фиксированный отступ от значения */
   font-size: 16px;
 }
 
@@ -130,19 +137,20 @@ button:hover {
   color: #333;
   font-size: 16px;
   line-height: 1.5;
+  flex-grow: 1; /* Разрешаем растягиваться */
 }
 
 .user-name {
   font-size: 24px;
   font-weight: 700;
   color: #667eea;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .user-birthday {
   color: #7f8c8d;
   font-style: italic;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
 }
 
 .error-message {
@@ -218,12 +226,18 @@ button:hover {
     margin-bottom: 20px;
   }
 
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 10px;
+  }
+
   .info-label {
     min-width: auto;
-    display: block;
-    font-weight: 600;
-    color: #555;
+    max-width: none;
+    margin-right: 0;
     margin-bottom: 5px;
+    white-space: normal; /* Разрешаем перенос на мобильных */
   }
 
   .info-value {
@@ -232,7 +246,7 @@ button:hover {
 
   .user-name {
     font-size: 22px;
-    margin-bottom: 30px; /* Увеличен в 2 раза от 15px → 30px */
+    margin-bottom: 30px;
   }
 
   .user-photo {
@@ -261,13 +275,21 @@ button:hover {
     margin-top: 30px;
   }
 
-  .info-item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 10px;
+  .network-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    margin-right: 6px;
+  }
+
+  .progress-container {
+    gap: 8px;
+  }
+
+  .progress {
+    height: 10px;
   }
 }
-
 
 /* Очень маленькие экраны (смартфоны в портретном режиме) */
 @media (max-width: 480px) {
@@ -290,16 +312,16 @@ button:hover {
 
   .user-name {
     font-size: 20px;
-    margin-bottom: 24px; /* Увеличен в 2 раза от 12px → 24px */
+    margin-bottom: 24px;
   }
 
   .info-label {
-    font-size: 15px;
+    font-size: 14px;
     margin-bottom: 4px;
   }
 
   .info-value {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .phone-input {
@@ -323,18 +345,23 @@ button:hover {
   }
 
   .network-icon {
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
-    margin-right: 6px;
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+    margin-right: 5px;
   }
 
   .progress-container {
-    gap: 8px;
+    gap: 6px;
   }
 
   .progress {
-    height: 10px;
+    height: 8px;
+  }
+
+  .error-message {
+    font-size: 16px;
+    padding: 15px;
   }
 }
 
@@ -352,7 +379,7 @@ button:hover {
 
   .user-name {
     font-size: 22px;
-    margin-bottom: 20px; /* Увеличен в 2 раза от 10px → 20px (если было 10px) */
+    margin-bottom: 20px;
   }
 
   .info-label {
@@ -372,18 +399,47 @@ button:hover {
     padding: 16px 35px;
     font-size: 17px;
   }
-}
-/* Основные стили (десктоп) */
-.user-name {
-  font-size: 24px;
-  font-weight: 700;
-  color: #667eea;
-  margin-bottom: 20px; /* Увеличен в 2 раза от 10px → 20px */
+
+  .network-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  .progress {
+    height: 11px;
+  }
 }
 
-.user-birthday {
-  color: #7f8c8d;
-  font-style: italic;
-  margin-bottom: 50px; /* Увеличен в 2 раза от 25px → 50px */
-}
+/* Дополнительные стили для печати */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
 
+  .container,
+  .user-card,
+  .info-item {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+
+  .user-photo {
+    border: none;
+    box-shadow: none;
+    filter: grayscale(100%);
+  }
+
+  a,
+  button,
+  .network-icon {
+    display: none !important;
+  }
+
+  .info-label::after {
+    content: ":";
+  }
+}
+  

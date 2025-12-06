@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ea33f7 0%, #ea33f7 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   padding: 40px;
   text-align: center;
 }
@@ -44,8 +44,8 @@ h1 {
 }
 
 .phone-input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+  border-color: #ea33f7;
+  box-shadow: 0 0 0 4px rgba(234, 51, 247, 0.2);
 }
 
 button {
@@ -53,7 +53,7 @@ button {
   font-size: 18px;
   font-weight: 600;
   color: white;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #ea33f7, #ea33f7);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -63,7 +63,7 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 20px rgba(234, 51, 247, 0.3);
 }
 
 /* Контейнер для результата */
@@ -72,15 +72,15 @@ button:hover {
   padding: 30px;
   background-color: #f8f9fa;
   border-radius: 16px;
-  display: none; /* Скрыт по умолчанию */
+  display: none;
 }
 
 /* Карточка пользователя */
 .user-card {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 30px;
-  align-items: center;
+  gap: 40px;
+  align-items: flex-start;
 }
 
 /* Блок с фото */
@@ -93,7 +93,7 @@ button:hover {
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid #667eea;
+  border: 5px solid #ea33f7;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
@@ -108,8 +108,8 @@ button:hover {
 }
 
 .info-item {
-  margin-bottom: 20px;
-  padding-bottom: 15px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
   border-bottom: 1px solid #eee;
   display: flex;
   align-items: center;
@@ -118,7 +118,7 @@ button:hover {
 .info-label {
   font-weight: 600;
   color: #555;
-  min-width: 140px;
+  min-width: 180px;
   font-size: 16px;
 }
 
@@ -128,18 +128,12 @@ button:hover {
   line-height: 1.5;
 }
 
-/* Заголовок в карточке */
+/* Заголовок */
 .user-name {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   color: #2c3e50;
-  margin-bottom: 10px;
-}
-
-.user-birthday {
-  color: #7f8c8d;
-  font-style: italic;
-  margin-bottom: 25px;
+  margin-bottom: 12px;
 }
 
 /* Сообщение об ошибке */

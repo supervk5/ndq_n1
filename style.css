@@ -61,7 +61,6 @@ button {
   letter-spacing: 0.5px;
 }
 
-
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
@@ -75,13 +74,11 @@ button:hover {
   display: none;
 }
 
-
-/* Основная сетка: фото + имя в левой колонке, данные — в правой */
 .user-card {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  grid-template-rows: auto auto 1fr;
-  gap: 15px;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px; /* Сокращён отступ между колонками на 50% (было 30px) */
+  align-items: flex-start; /* Выравнивание по верхнему краю */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -92,17 +89,10 @@ button:hover {
   transform: translateY(0);
 }
 
-/* Контейнер для фото и имени — левая колонка */
-.photo-and-name {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Центрируем по горизонтали */
-  justify-content: center; /* Центрируем по вертикали */
-  gap: 10px;
+.photo-container {
+  text-align: center;
+  grid-row: 1 / 3; /* Фото занимает две строки (чтобы имя оказалось под ним) */
 }
-
 
 .user-photo {
   width: 180px;
@@ -118,40 +108,38 @@ button:hover {
   transform: scale(1.05);
 }
 
+.info-container {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px; /* Отступы между элементами внутри info-container */
+}
+
 .user-name {
   font-size: 24px;
   font-weight: 700;
   color: #667eea;
-  margin: 0;
+  margin: 15px 0 20px 0; /* Отступ сверху и снизу, имя по центру */
   text-align: center;
   width: 100%;
 }
 
-/* Правая колонка — данные */
-.info-container {
-  grid-column: 2;
-  grid-row: 1 / 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
 .info-item {
+  margin-bottom: 10px; /* Сокращён отступ снизу на 50% (было 20px) */
+  padding-bottom: 7px; /* Сокращён нижний padding на 50% (было 15px) */
+  border-bottom: 1px solid #eee;
   display: flex;
   align-items: center;
-  margin-bottom: 0;
-  padding-bottom: 7px;
-  border-bottom: 1px solid #eee;
-  gap: 8px; /* Единый отступ между label и value */
+  gap: 15px; /* Пробел между названием и значением */
 }
 
 .info-label {
   font-weight: 600;
   color: #667eea;
+  min-width: 140px;
   font-size: 16px;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .info-value {
@@ -229,111 +217,36 @@ button:hover {
     padding: 20px;
     border-radius: 12px;
   }
-  
-/* Вертикальная укладка на мобильных */
-@media (max-width: 768px) {
-  .container {
-    padding: 20px;
-    border-radius: 12px;
-  }
 
   .user-card {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 20px;
-    justify-items: center; /* Центрируем все элементы по горизонтали */
-  }
-
-  .photo-and-name,
-  .info-container {
-    grid-column: 1;
-    width: 100%;
-    text-align: center;
-  }
-
-  .user-photo {
-    width: 140px;
-    height: 140px;
-  }
-
-  .user-name {
-    font-size: 22px;
-    margin: 15px 0 10px; /* Отступ сверху больше, снизу меньше */
-    text-align: center;
-  }
-
-  .info-container {
-    padding: 0 15px;
-    align-items: center;
-  }
-
-  .info-item {
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    padding-bottom: 6px;
-    text-align: center;
-  }
-
-  .info-label,
-  .info-value {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-  }
-
-  .info-label {
-    font-size: 15px;
-    font-weight: 600;
-    color: #667eea;
-  }
-
-  .info-value {
-    font-size: 15px;
-    color: #333;
-  }
-}
-
-/* Дополнительные корректировки для очень маленьких экранов (до 480px) */
-@media (max-width: 480px) {
-  .container {
-    padding: 15px;
-  }
-
-  .user-card {
     gap: 15px;
   }
 
-  .user-photo {
-    width: 120px;
-    height: 120px;
-  }
-
-  .user-name {
-    font-size: 20px;
-    margin: 12px 0 8px;
+  .photo-container {
+    text-align: center;
+    margin-bottom: 10px;
+    grid-row: auto;
   }
 
   .info-container {
-    padding: 0 10px;
+    padding-top: 0;
   }
 
-  .info-item {
-    gap: 4px;
-    padding-bottom: 4px;
+  .user-name {
+    margin: 15px 0;
+    text-align: left;
   }
 
   .info-label {
-    font-size: 14px;
+    min-width: auto;
+    display: block;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
   }
 
   .info-value {
-    font-size: 14px;
-  }
-
-  .phone-input,
-  button {
-    padding: 14px 16px;
-    font-size: 15px;
+    margin-left: 0;
   }
 }

@@ -1,18 +1,19 @@
 [
   {
-    "phone": "79156522596",
-    "name": "Иван",
-    "number_count": 3,
+    "phone": "79161425372",
+    "name": "Станислав",
+    "number_count": 1,
     "mm_app": "есть",
-    "last_contact": "12.10.2025",
-    "birthday": "12 ноября",
+    "last_contact": "28.07.2025",
+    "birthday": "14 марта",
     "region": "Москва",
     "best_network": "5G",
-    "device_model": "Apple iPhone 17 Pro",
-    "4g_share": "89,5%",
-    "offline_share": "10,1%",
+    "device_model": "Samsung Galaxy S25 Ultra",
+    "4g_share": "99,7%",
+    "offline_share": "0,3%",
     "messengers": ["telegram", "whatsapp", "VK"],
-    "online_cinemas": ["kion", "кинопоиск", "wink", "okko", "ivi"],
-    "photo": "images/photo_slava.jpg"
+    "online_cinemas": ["кинопоиск", "okko"],
+    "photo": "images/s_1.png"
   }
 ]
+

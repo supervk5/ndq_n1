@@ -1,19 +1,3 @@
-[
-  {
-    "phone": "79161425372",
-    "name": "Станислав",
-    "number_count": 1,
-    "mm_app": "есть",
-    "last_contact": "28.07.2025",
-    "birthday": "14 марта",
-    "region": "Москва",
-    "best_network": "5G",
-    "device_model": "Samsung Galaxy S25 Ultra",
-    "4g_share": "99,7%",
-    "offline_share": "0,3%",
-    "messengers": ["telegram", "whatsapp", "VK"],
-    "online_cinemas": ["кинопоиск", "okko"],
-    "photo": "images/s_1.png"
-  }
-]
+
+
 

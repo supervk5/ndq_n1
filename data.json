@@ -1,3 +1,21 @@
+[
+  {
+       "phone": "79156522596",
+       "name": "Никита",
+       "number_count": 4,
+       "mm_app": "есть",
+       "last_contact": "01.10.2025",
+       "birthday": "30 сентября",
+       "region": "Москва",
+       "best_network": "5G",
+       "device_model": "Apple iPhone 16 Pro Max",
+       "4g_share": "67.9%",
+       "offline_share": "32.1%",
+       "messengers": ["telegram", "whatsapp", "VK"],
+       "online_cinemas": ["Kion", "Кинопоиск", "Okko"],
+       "photo": "images/nikitasmirnov.png"
+  }
+]
 
 
 

@@ -123,8 +123,8 @@ button:hover {
 .info-label {
   font-weight: 600;
   color: #667eea;
-  min-width: 240px;  /* Увеличено с 140px до 240px */
-  max-width: 240px;  /* Увеличено с 140px до 240px */
+  min-width: 220px;  /* Увеличено с 140px до 240px */
+  max-width: 220px;  /* Увеличено с 140px до 240px */
   flex-shrink: 0;     /* Запрещаем сжатие */
   white-space: nowrap; /* Запрещаем перенос текста */
   overflow: hidden;
@@ -479,4 +479,5 @@ button:hover {
     page-break-inside: avoid;
   }
 }
+
 

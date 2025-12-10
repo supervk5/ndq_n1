@@ -131,6 +131,16 @@ button:hover {
   text-overflow: ellipsis;
   margin-right: 15px; /* Фиксированный отступ от значения */
   font-size: 16px;
+
+    /* Управление переносами */
+  white-space: normal;          /* Разрешаем перенос по словам */
+  word-break: break-word;      /* Переносим длинные слова */
+  hyphens: auto;               /* «Умные» переносы со знаком «‑» (если поддерживается) */
+
+  /* Дополнительные стили */
+  overflow: hidden;
+  text-overflow: ellipsis;       /* Многоточие, если текст всё равно не влез */
+  line-height: 1.4;           /* Интерлиньяж для читаемости */
 }
 
 .info-value {
@@ -469,3 +479,4 @@ button:hover {
     page-break-inside: avoid;
   }
 }
+

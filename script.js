@@ -141,7 +141,7 @@ async function searchData() {
             </div>
 
             <div class="info-item">
-              <span class="info-label">Онлайн‑кинотеатры: </span>
+              <span class="info-label">Онлайн‑кинотеатры (смартфон): </span>
               <span class="info-value">${cinemasList}</span>
             </div>
 
@@ -168,4 +168,5 @@ document.getElementById('phoneInput').addEventListener('keydown', function(e) {
     searchData();
   }
 });
+
 
